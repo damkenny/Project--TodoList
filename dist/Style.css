@@ -1,0 +1,384 @@
+body {
+    margin: 0px;
+    height: auto;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+  
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50pt;
+    font-weight: 700;
+    margin-top: .125em;
+    margin-bottom: .125em;
+  }
+  #blur-hack {
+    z-index: -1;
+    
+  }
+  .fa-minus {
+    color: rgb(238, 59, 59);
+  }
+  
+  .fa-plus {
+    color: rgb(32, 232, 32);
+    pointer-events: none;
+  }
+  
+  .fa-bars {
+    color: black;
+    transform: rotate(-45deg);
+    border: 1px;
+    /* border-style: solid; */
+    border-radius: 50%;
+    padding: .5em;
+  }
+  .rotate {
+    transform: rotate(0deg);
+  }
+  .fa-exclamation {
+    pointer-events: none;
+    color: black;
+  }
+  
+  .fa-check {
+    pointer-events: none;
+  }
+  
+  /* Tear drop from https://csslayout.io/patterns/teardrop/ 
+  © 2019-2021 Nguyen Huu Phuoc */
+  
+  .waterDrop {
+    margin:0px;
+    position: relative;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 0px 50% 50% 50%;
+    transform: rotate(45deg);
+    height: 64px;
+    width: 64px;
+    margin: 4px;
+    top: 25%;
+    bottom: 50%;
+    background-image: radial-gradient(ellipse at top, rgb(255, 255, 255) 50%, rgb(203, 205, 255));
+  }
+  
+  #waterDropContent {
+    transform: rotate(-45deg);
+  }
+  
+  #container {
+    display: flexbox;
+    background-color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 1px;
+  }
+  
+  .titlebar {
+    background-color: #039be5;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    margin-bottom: 0px;
+    align-self: auto;
+  }
+  
+  .menu {
+    position: absolute;
+    height: max-content;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    background-color: #E1E2E1;
+    width: fit-content;
+    z-index: 50;
+  }
+  
+  .menuItem {
+    text-align: left;
+    font-size: 20pt;
+    border-width: 0px;
+    margin-right: 10px;
+    padding-right: 10px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    user-select: none;
+  }
+  
+  
+  .menuItem:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23) inset;
+  }
+  #projectEdit {
+    width: 275px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+  #projectEdit:focus {
+    outline: none;
+    border-style: none;
+  }
+  .selected {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    border-style: solid;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    background-color: #63ccff;
+  }
+  
+  #newProject {
+    background-color: transparent;
+    outline: none;
+    border-style: none;
+  }
+  
+  .contentArea {
+    grid-area: content;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    background-color: rgba(255, 255, 255, 0);
+    overflow-y: hidden;
+    user-select: none;
+  }
+  @media only screen and (min-width: 400px) {
+    .contentArea {
+      padding-left: 2em;
+    }
+  }
+  .task {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    height: fit-content;
+    display: grid;
+    grid-template-rows: 1.5em auto auto 2em;
+    margin-top: 1rem;
+    background-color: #E1E2E1;
+    margin-right: 0rem;
+    margin-bottom: 1rem;
+    width: 359px
+  }
+  
+  .taskTitle {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #039be5;
+    color: white;
+  }
+  
+  .taskName {
+    justify-self: left;
+    margin-left: 1em;
+    align-self: center;
+    max-width: fit-content;
+  }
+  
+  .taskNameInput {
+    background-color: transparent;
+    border-style: none;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left;
+    width: 75px;
+    color: white;
+    overflow-x: visible;
+    font-size: 9pt;
+  }
+  
+  .taskNameInput:focus {
+    border-style: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    outline: none;
+  }
+  
+  .taskProject {
+    place-self: center;
+    font-size: 10pt;
+  }
+  
+  .projectMenu {
+    display: none;
+    position: absolute;
+    z-index: 10;
+  }
+  
+  .projectMenu:hover {
+    display: block;
+  }
+  
+  .taskDate {
+    justify-self: right;
+    align-self: center;
+    text-align: right;
+    color: white;
+  }
+  
+  .taskDate {
+    background-color: transparent;
+    border-style: none;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left;
+    width: 120px;
+    color: white;
+    overflow-x: visible;
+    font-size: 9pt;
+  }
+  
+  .taskDate:focus {
+    border-style: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    outline: none;
+  }
+  
+  .taskDesc {
+    place-self: stretch;
+    margin: 1rem
+  }
+  
+  .description {
+    width: 100%;
+    overflow-y: auto;
+    max-height: 100%;
+    height: 4rem;
+    border-radius: 15px;
+    background-color: #63ccff;
+    border-style: none;
+    text-align: left;
+    text-indent: 1rem;
+  }
+  
+  .description:focus {
+    border-style: none;
+    outline: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+  
+  textarea {
+    resize: none;
+    background-color: transparent;
+    font-size: 16px;
+  }
+  
+  .subTasks {
+    place-self: center;
+    text-align: center;
+  }
+  
+  .subtask {
+    background-color: transparent;
+    border-style: none;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    width: fit-content;
+    overflow-x: visible;
+    font-size: 12pt;
+  }
+  
+  .subtask:focus {
+    border-style: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    outline: none;
+  }
+  
+  .newSubtask:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23) inset;
+  }
+  
+  .taskFooter {
+    display: grid;
+    place-self: stretch;
+    text-indent: .5em;
+    grid-template-columns: 1fr 1.5em;
+    align-self: end;
+  }
+  
+  .taskComplete {
+    width: 100%;
+    align-self: stretch;
+  }
+  
+  .taskImportant {
+    background-color: white;
+    justify-self: right;
+    padding-right: 1em;
+    border-style: solid;
+    border-color: red;
+  }
+  
+  .taskImportant:hover {
+    box-shadow: 0 10px 20px rgba(226, 10, 10, 0.19), 0 6px 6px rgba(181, 43, 43, 0.23) inset;
+  }
+  
+  
+  .addNewTask {
+    height: .6em;
+    padding-top: .5em;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    background-color: #E1E2E1;
+    padding-bottom: .5em;
+    margin-right: 3em;
+    text-align: center;
+    place-self: stretch;
+    margin-top: 4rem;
+    margin-bottom: .5rem;
+  }
+  
+  .addNewTask:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23) inset;
+  }
+  
+  .bottomBar {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: left;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.912);
+    color: white;
+    bottom: 0%;
+    width: 100%;
+    height: 20px;
+    overflow: hidden;
+    font-size: 10pt;
+    text-align: right;
+    z-index: 100;
+    padding-top: 2px;
+    font-size: 8pt;
+  }
+  
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .dropMenu {
+    position: absolute;
+    background-color: white;
+    color: black;
+    z-index: 100;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+  
+  .projMenuItem {
+    text-align: left;
+    font-size: 20pt;
+    border-width: 0px;
+    font-weight: 500;
+    padding-right: .5em;
+    padding-left: .5em;
+    font-family: 'Montserrat', sans-serif;
+    z-index: 101;
+  }
+  
+  .projMenuItem:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23) inset;
